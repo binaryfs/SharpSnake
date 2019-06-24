@@ -1,5 +1,8 @@
 ﻿namespace SharpSnake.Core
 {
+    /// <summary>
+    /// Encapsulates data that is sent to a <see cref="StateStack"/> when requesting state changes.
+    /// </summary>
     public struct StateChangeInfo
     {
         public readonly StateChangeCommand Command;

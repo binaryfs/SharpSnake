@@ -5,25 +5,40 @@ using SharpSnake.Display;
 
 namespace SharpSnake.Game
 {
+    /// <summary>
+    /// Represents the game's protagonist.
+    /// </summary>
     public class Snake
     {
+        /// <summary>
+        /// The snake head's position along the X-axis (in terminal cells).
+        /// </summary>
         public int Left
         {
             get;
             private set;
         }
 
+        /// <summary>
+        /// The snake head's positon along the Y-axis (in terminal cells).
+        /// </summary>
         public int Top
         {
             get;
             private set;
         }
 
+        /// <summary>
+        /// The position of the snake head.
+        /// </summary>
         public Point Position
         {
             get => new Point(Left, Top);
         }
 
+        /// <summary>
+        /// The direction we are facing.
+        /// </summary>
         public Direction Direction
         {
             get;
@@ -35,12 +50,18 @@ namespace SharpSnake.Game
         private readonly Timer MoveTimer;
         private Direction DesiredDirection = Direction.Right;
 
-        public Snake(int left, int top, int growth = 0)
+        /// <summary>
+        /// Initialize a new Snake instance.
+        /// </summary>
+        /// <param name="left"></param>
+        /// <param name="top"></param>
+        /// <param name="initialLength"></param>
+        public Snake(int left, int top, int initialLength = 0)
         {
             Direction = DesiredDirection;
             Left = left;
             Top = top;
-            Growth = growth;
+            Growth = initialLength;
             MoveTimer = new Timer(10, Move);
         }
 
@@ -82,21 +103,40 @@ namespace SharpSnake.Game
             }
         }
 
+        /// <summary>
+        /// Grow the snake by the given amount.
+        /// </summary>
+        /// <param name="growth">Number of segments to add</param>
         public void Grow(int growth = 1)
         {
             Growth += growth;
         }
 
+        /// <summary>
+        /// Check if the snake collides with the given position.
+        /// </summary>
+        /// <param name="position">The position to check</param>
+        /// <returns>true if it does, false otherwise</returns>
         public bool CollidesWith(Point position)
         {
             return HeadCollidesWith(position) || BodyColliedsWith(position);
         }
 
+        /// <summary>
+        /// Check if the snake's head collides with the given position.
+        /// </summary>
+        /// <param name="position">The position to check</param>
+        /// <returns>true if it does, false otherwise</returns>
         public bool HeadCollidesWith(Point position)
         {
             return Position.Equals(position);
         }
 
+        /// <summary>
+        /// Check if the snake's body collides with the given position.
+        /// </summary>
+        /// <param name="position">The position to check</param>
+        /// <returns>true if it does, false otherwise</returns>
         public bool BodyColliedsWith(Point position)
         {
             foreach (Point part in Body)
@@ -110,6 +150,10 @@ namespace SharpSnake.Game
             return false;
         }
 
+        /// <summary>
+        /// Check if the snake collides with its own body.
+        /// </summary>
+        /// <returns>true if it does, false otherwise</returns>
         public bool CollidesWithSelf()
         {
             foreach (Point part in Body)

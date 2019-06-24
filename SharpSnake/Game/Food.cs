@@ -3,6 +3,9 @@ using SharpSnake.Display;
 
 namespace SharpSnake.Game
 {
+    /// <summary>
+    /// Represents an item that increases the player's score when collected.
+    /// </summary>
     public class Food
     {
         public Point Position
