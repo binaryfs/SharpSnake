@@ -7,6 +7,9 @@ using System;
 
 namespace SharpSnake.Game.States
 {
+    /// <summary>
+    /// The main menu state.
+    /// </summary>
     public class MenuState: State
     {
         private readonly Menu Menu;

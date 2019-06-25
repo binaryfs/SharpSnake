@@ -1,7 +1,7 @@
 ﻿namespace SharpSnake.Input
 {
     /// <summary>
-    /// Available input actions.
+    /// Available high-level input actions.
     /// </summary>
     public enum ActionType
     {

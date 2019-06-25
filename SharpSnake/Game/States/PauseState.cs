@@ -12,7 +12,7 @@ namespace SharpSnake.Game.States
         private readonly Timer PauseTimer;
         private bool PauseVisible = true;
 
-        public PauseState(StateContext context): base(context, true)
+        public PauseState(StateContext context): base(context)
         {
             InputMap.AddMapping(Terminal.TK_UP, ActionType.MoveUp);
             InputMap.AddMapping(Terminal.TK_DOWN, ActionType.MoveDown);
@@ -24,6 +24,7 @@ namespace SharpSnake.Game.States
             Menu.AddItem(new Button("Cancel", PressCancel));
 
             PauseTimer = new Timer(20, () => PauseVisible = !PauseVisible);
+            Transparent = true;
         }
 
         public override void Update()

@@ -22,10 +22,19 @@ namespace SharpSnake.Core
             get;
         }
 
+        /// <summary>
+        /// Handle user input.
+        /// </summary>
         void HandleInput();
 
+        /// <summary>
+        /// Draw the state on screen.
+        /// </summary>
         void Draw();
 
+        /// <summary>
+        /// Execute game logic.
+        /// </summary>
         void Update();
     }
 }

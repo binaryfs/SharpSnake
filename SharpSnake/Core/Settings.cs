@@ -4,7 +4,7 @@ using SharpSnake.Display;
 namespace SharpSnake.Core
 {
     /// <summary>
-    /// Encapsulates common game settings.
+    /// Encapsulates adjustable game settings.
     /// </summary>
     public class Settings
     {

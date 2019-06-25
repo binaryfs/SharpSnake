@@ -5,6 +5,7 @@ using BearLib;
 
 namespace SharpSnake.Core
 {
+    // TODO: Move this code into the Program class
     public class Application
     {
         public static readonly string GameTitle = string.Join(

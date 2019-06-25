@@ -7,6 +7,9 @@ using System.Drawing;
 
 namespace SharpSnake.Game.States
 {
+    /// <summary>
+    /// The state that implements the game logic.
+    /// </summary>
     public class PlayState: State
     {
         private readonly Snake Snake;
@@ -30,6 +33,7 @@ namespace SharpSnake.Game.States
 
         public override void Update()
         {
+            // TODO: Implement adjustable game speed
             Food.Update();
             Snake.Update();
             CheckForCollisions();

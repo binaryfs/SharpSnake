@@ -8,17 +8,52 @@ namespace SharpSnake.Game
     /// </summary>
     public class Food
     {
+        /// <summary>
+        /// Screen position in columns and rows.
+        /// </summary>
         public Point Position
         {
             get => new Point(Left, Top);
         }
 
+        /// <summary>
+        /// Screen position along the X-axis in columns.
+        /// </summary>
+        public int Left
+        {
+            get;
+        }
+
+        /// <summary>
+        /// Screen position along the Y-axis in rows.
+        /// </summary>
+        public int Top
+        {
+            get;
+        }
+
+        /// <summary>
+        /// Indicates the item type.
+        /// The type determines the item's score and look.
+        /// </summary>
+        public FoodType Type
+        {
+            get;
+        }
+
+        /// <summary>
+        /// Indicates whether the item is marked for removal.
+        /// Items spoil when their lifetime has run out.
+        /// </summary>
         public bool Spoiled
         {
             get;
             private set;
         }
 
+        /// <summary>
+        /// The amount points that the user receives when collecting the item.
+        /// </summary>
         public int Score
         {
             get
@@ -35,9 +70,6 @@ namespace SharpSnake.Game
             }
         }
 
-        public readonly FoodType Type;
-        public readonly int Left;
-        public readonly int Top;
         private readonly Timer Lifetime;
         private readonly Timer Blinking;
         private bool Visible = true;

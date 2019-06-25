@@ -11,7 +11,7 @@ namespace SharpSnake.Game
     public class Snake
     {
         /// <summary>
-        /// The snake head's position along the X-axis (in terminal cells).
+        /// The snake's head screen position along the X-axis (in columns).
         /// </summary>
         public int Left
         {
@@ -20,7 +20,7 @@ namespace SharpSnake.Game
         }
 
         /// <summary>
-        /// The snake head's positon along the Y-axis (in terminal cells).
+        /// The snake's head screen positon along the Y-axis (in rows).
         /// </summary>
         public int Top
         {
@@ -29,7 +29,7 @@ namespace SharpSnake.Game
         }
 
         /// <summary>
-        /// The position of the snake head.
+        /// The position of the snake's head in columns and rows.
         /// </summary>
         public Point Position
         {
@@ -37,7 +37,7 @@ namespace SharpSnake.Game
         }
 
         /// <summary>
-        /// The direction we are facing.
+        /// The direction that the snake is facing/moving.
         /// </summary>
         public Direction Direction
         {
@@ -53,9 +53,9 @@ namespace SharpSnake.Game
         /// <summary>
         /// Initialize a new Snake instance.
         /// </summary>
-        /// <param name="left"></param>
-        /// <param name="top"></param>
-        /// <param name="initialLength"></param>
+        /// <param name="left">Initial position on X-axis</param>
+        /// <param name="top">Initial position on Y-axis</param>
+        /// <param name="initialLength">Initial length of the snake's body</param>
         public Snake(int left, int top, int initialLength = 0)
         {
             Direction = DesiredDirection;
@@ -201,7 +201,7 @@ namespace SharpSnake.Game
 
         private void ChangeDirection(Direction newDirection, Direction opposite)
         {
-            DesiredDirection = Direction != opposite ? newDirection : opposite;
+            DesiredDirection = (Direction != opposite) ? newDirection : opposite;
         }
     }
 }

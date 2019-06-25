@@ -3,7 +3,7 @@
 namespace SharpSnake.Core
 {
     /// <summary>
-    /// Represents data that is shared between <see cref="State"/> instances.
+    /// Encapsulates data that is shared between <see cref="State"/> instances.
     /// </summary>
     public struct StateContext
     {

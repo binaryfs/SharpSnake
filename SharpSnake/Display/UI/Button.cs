@@ -2,10 +2,16 @@
 
 namespace SharpSnake.Display.UI
 {
+    /// <summary>
+    /// Represents a menu item that triggers an event when pressed.
+    /// </summary>
     public class Button: IMenuItem
     {
         public delegate void PressHandler();
 
+        /// <summary>
+        /// The button's label.
+        /// </summary>
         public string Text
         {
             get;
@@ -14,6 +20,11 @@ namespace SharpSnake.Display.UI
 
         private event PressHandler OnPress;
 
+        /// <summary>
+        /// Initialize a new button instance.
+        /// </summary>
+        /// <param name="text">Button label</param>
+        /// <param name="pressHandler">Event handler for button presses</param>
         public Button(string text, PressHandler pressHandler)
         {
             Text = text;

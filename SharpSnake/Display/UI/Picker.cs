@@ -3,16 +3,26 @@ using SharpSnake.Input;
 
 namespace SharpSnake.Display.UI
 {
+    /// <summary>
+    /// Represents a list of pickable options.
+    /// </summary>
+    /// <typeparam name="T">The type to use for option values</typeparam>
     public class Picker<T>: IMenuItem
     {
         public delegate void ChangeHandler(T selectedOption);
 
+        /// <summary>
+        /// The text label that is displayed next to the options.
+        /// </summary>
         public string Label
         {
             get;
             private set;
         }
 
+        /// <summary>
+        /// The currently selected option.
+        /// </summary>
         public Option<T> SelectedOption
         {
             get
@@ -25,6 +35,11 @@ namespace SharpSnake.Display.UI
         private readonly List<Option<T>> Options;
         private event ChangeHandler OnChange;
 
+        /// <summary>
+        /// Initialize a new picker instance.
+        /// </summary>
+        /// <param name="label">The label to set</param>
+        /// <param name="changeHandler">The event handler to call when a new option is selected</param>
         public Picker(string label, ChangeHandler changeHandler)
         {
             Label = label;
@@ -32,19 +47,14 @@ namespace SharpSnake.Display.UI
             Options = new List<Option<T>>();
         }
 
+        /// <summary>
+        /// Add an option to the picker.
+        /// </summary>
+        /// <param name="name">The option's name</param>
+        /// <param name="value">The option's value</param>
         public void AddOption(string name, T value)
         {
             Options.Add(new Option<T>(name, value));
-        }
-
-        public void AddOption(string name, T value, T selectedValue)
-        {
-            AddOption(name, value);
-
-            if (value.Equals(selectedValue))
-            {
-                SelectedIndex = Options.Count - 1;
-            }
         }
 
         public void HandleAction(ActionType action)
@@ -78,6 +88,10 @@ namespace SharpSnake.Display.UI
             screen.Draw('>', offset, top);
         }
 
+        /// <summary>
+        /// Select an option by its value.
+        /// </summary>
+        /// <param name="value">The value of the option</param>
         public void SelectOption(T value)
         {
             int index = 0;
@@ -94,6 +108,10 @@ namespace SharpSnake.Display.UI
             }
         }
 
+        /// <summary>
+        /// Select the next option from the picker.
+        /// Selects the first option when the end of list is reached.
+        /// </summary>
         public void SelectNextOption()
         {
             SelectedIndex += 1;
@@ -102,6 +120,10 @@ namespace SharpSnake.Display.UI
             OnChange?.Invoke(SelectedOption.Value);
         }
 
+        /// <summary>
+        /// Select the previous option from the picker.
+        /// Selects the last option when the end of list is reached.
+        /// </summary>
         public void SelectPreviousOption()
         {
             SelectedIndex -= 1;

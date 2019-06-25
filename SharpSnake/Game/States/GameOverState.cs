@@ -7,6 +7,9 @@ using BearLib;
 
 namespace SharpSnake.Game.States
 {
+    /// <summary>
+    /// The game over screen.
+    /// </summary>
     public class GameOverState: State
     {
         private readonly Menu Menu;

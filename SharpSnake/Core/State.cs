@@ -12,19 +12,19 @@ namespace SharpSnake.Core
         public bool Transparent
         {
             get;
+            protected set;
         }
 
         public readonly StateContext Context;
-        protected readonly InputMap InputMap;
+        protected readonly InputMap InputMap = new InputMap();
 
-        public State(StateContext context, bool transparent = false)
+        public State(StateContext context)
         {
-            InputMap = new InputMap();
             Context = context;
-            Transparent = transparent;
         }
         
         public abstract void Draw();
+        protected abstract void HandleAction(ActionType action);
 
         public virtual void Update()
         {
@@ -35,8 +35,6 @@ namespace SharpSnake.Core
         {
             InputMap.SendActions(HandleActionInternal);
         }
-
-        protected abstract void HandleAction(ActionType action);
 
         /// <summary>
         /// Request the state stack to push the specified state.

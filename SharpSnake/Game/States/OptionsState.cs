@@ -6,6 +6,9 @@ using BearLib;
 
 namespace SharpSnake.Game.States
 {
+    /// <summary>
+    /// The options menu state.
+    /// </summary>
     public class OptionsState: State
     {
         private readonly Menu Menu;

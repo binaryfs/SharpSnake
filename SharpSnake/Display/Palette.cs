@@ -4,12 +4,18 @@ using System.Collections.Generic;
 
 namespace SharpSnake.Display
 {
+    /// <summary>
+    /// Represents a color palette that holds available drawing colors.
+    /// </summary>
     public class Palette
     {
         private readonly Color[] Colors;
 
         private static readonly Dictionary<PaletteId, Palette> Palettes;
 
+        /// <summary>
+        /// Initialize predefined palettes.
+        /// </summary>
         static Palette()
         {
             Palettes = new Dictionary<PaletteId, Palette>();
@@ -37,16 +43,31 @@ namespace SharpSnake.Display
             }));
         }
 
+        /// <summary>
+        /// Initialize a new palette with specified colors.
+        /// Please note that the number and order of colors should match that in the <see cref="PaletteColor"/> enum.
+        /// </summary>
+        /// <param name="colors">Array of colors</param>
         public Palette(Color[] colors)
         {
             Colors = colors;
         }
 
+        /// <summary>
+        /// Get a color from the palette.
+        /// </summary>
+        /// <param name="color">The color's ID</param>
+        /// <returns>The color</returns>
         public Color GetColor(PaletteColor color)
         {
             return Colors[Convert.ToInt32(color)];
         }
 
+        /// <summary>
+        /// Get a palette by its ID.
+        /// </summary>
+        /// <param name="paletteId">Palette ID</param>
+        /// <returns>The requested palette</returns>
         public static Palette GetPalette(PaletteId paletteId)
         {
             return Palettes[paletteId];
