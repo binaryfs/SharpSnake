@@ -1,5 +1,4 @@
-﻿using System;
-using SharpSnake.Core;
+﻿using SharpSnake.Core;
 using SharpSnake.Display;
 using SharpSnake.Display.UI;
 using SharpSnake.Input;

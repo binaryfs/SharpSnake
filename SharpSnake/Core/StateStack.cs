@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using SharpSnake.Display;
 
 namespace SharpSnake.Core
 {

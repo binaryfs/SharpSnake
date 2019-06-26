@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace SharpSnake.Game
+﻿namespace SharpSnake.Game
 {
     /// <summary>
     /// Represents a timer that triggers an event handler in specified intervals.

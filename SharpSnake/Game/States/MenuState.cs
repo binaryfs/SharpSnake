@@ -34,7 +34,7 @@ namespace SharpSnake.Game.States
         public override void Draw()
         {
             Context.Screen.SetColor(PaletteColor.Snake);
-            Context.Screen.Draw(Application.GameTitle, 3, 3);
+            Context.Screen.Draw(Program.GameTitle, 3, 3);
             Menu.Draw(Context.Screen, 3, 17);
         }
     }

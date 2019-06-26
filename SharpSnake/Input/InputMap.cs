@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows.Input;
+﻿using System.Collections.Generic;
 using BearLib;
 
 namespace SharpSnake.Input
