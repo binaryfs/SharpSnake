@@ -22,7 +22,6 @@ namespace SharpSnake.Game.States
             InputMap.AddMapping(Terminal.TK_ENTER, ActionType.Activate);
 
             var speedPicker = new Picker<GameSpeed>("Speed", HandleChangeSpeed);
-            speedPicker.AddOption("Auto", GameSpeed.Auto);
             speedPicker.AddOption("Slow", GameSpeed.Slow);
             speedPicker.AddOption("Medium", GameSpeed.Medium);
             speedPicker.AddOption("Fast", GameSpeed.Fast);

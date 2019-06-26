@@ -25,7 +25,7 @@ namespace SharpSnake.Game.States
             InputMap.AddMapping(Terminal.TK_RIGHT, ActionType.MoveRight);
             InputMap.AddMapping(Terminal.TK_ESCAPE, ActionType.Escape);
 
-            Snake = new Snake(10, 10, 10);
+            Snake = new Snake(10, 10, context.Settings.Speed, 10);
             GameField = new Rectangle(2, 3, context.Screen.Width - 4, context.Screen.Height - 5);
 
             PlaceRandomFood();
@@ -33,7 +33,6 @@ namespace SharpSnake.Game.States
 
         public override void Update()
         {
-            // TODO: Implement adjustable game speed
             Food.Update();
             Snake.Update();
             CheckForCollisions();
@@ -104,15 +103,15 @@ namespace SharpSnake.Game.States
                     int type = rnd.Next(0, 100);
                     if (type < 10)
                     {
-                        Food = new Food(FoodType.Feast, left, top);
+                        Food = new Food(FoodType.Feast, left, top, Context.Settings.Speed);
                     }
                     else if (type < 30)
                     {
-                        Food = new Food(FoodType.Meal, left, top);
+                        Food = new Food(FoodType.Meal, left, top, Context.Settings.Speed);
                     }
                     else
                     {
-                        Food = new Food(FoodType.Snack, left, top);
+                        Food = new Food(FoodType.Snack, left, top, Context.Settings.Speed);
                     }
                 }
             }

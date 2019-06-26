@@ -25,5 +25,10 @@ namespace SharpSnake.Core
             get;
             set;
         }
+
+        public Settings()
+        {
+            Speed = GameSpeed.Medium;
+        }
     }
 }

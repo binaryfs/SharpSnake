@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System.Collections.Generic;
+using System.Drawing;
 using SharpSnake.Display;
 
 namespace SharpSnake.Game
@@ -52,7 +53,7 @@ namespace SharpSnake.Game
         }
 
         /// <summary>
-        /// The amount points that the user receives when collecting the item.
+        /// The amount of points that the user receives when collecting the item.
         /// </summary>
         public int Score
         {
@@ -74,12 +75,26 @@ namespace SharpSnake.Game
         private readonly Timer Blinking;
         private bool Visible = true;
 
-        public Food(FoodType type, int left, int top)
+        /// <summary>
+        /// Initialize a new food item at the specified location.
+        /// </summary>
+        /// <param name="type">Food type</param>
+        /// <param name="left">Position along X-axis in columns</param>
+        /// <param name="top">Position along Y-axis in rows</param>
+        public Food(FoodType type, int left, int top, GameSpeed gameSpeed)
         {
             Type = type;
             Left = left;
             Top = top;
-            Lifetime = new Timer(300, () => Spoiled = true);
+
+            var speedMap = new Dictionary<GameSpeed, int>()
+            {
+                [GameSpeed.Slow] = 400,
+                [GameSpeed.Medium] = 350,
+                [GameSpeed.Fast] = 300
+            };
+
+            Lifetime = new Timer(speedMap[gameSpeed], () => Spoiled = true);
             Blinking = new Timer(10, () => Visible = !Visible);
         }
 
@@ -87,6 +102,7 @@ namespace SharpSnake.Game
         {
             Lifetime.Tick();
 
+            // Let the item blink if it is about to spoil.
             if (Lifetime.Progress >= 0.8)
             {
                 Blinking.Tick();

@@ -23,17 +23,26 @@ namespace SharpSnake.Game.States
             InputMap.AddMapping(Terminal.TK_ENTER, ActionType.Activate);
 
             Menu = new Menu();
-            Menu.AddItem(new Button("Return to Menu", () => RequestPopState()));
+            Menu.AddItem(new Button("Retry", Retry));
+            Menu.AddItem(new Button("Cancel", () => RequestPopState()));
         }
 
         public override void Draw()
         {
-            Menu.Draw(Context.Screen, 20, 20);
+            Context.Screen.SetColor(PaletteColor.Snake);
+            Context.Screen.Draw("GAME OVER", 3, 15);
+            Menu.Draw(Context.Screen, 3, 17);
         }
 
         protected override void HandleAction(ActionType action)
         {
             Menu.HandleAction(action);
+        }
+
+        private void Retry()
+        {
+            RequestPopState();
+            RequestPushState(StateId.Play);
         }
     }
 }

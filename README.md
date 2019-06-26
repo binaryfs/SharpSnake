@@ -9,7 +9,7 @@ Uses the [BearLibTerminal](https://bitbucket.org/cfyzium/bearlibterminal) librar
 - Simple UI/menu system
 - Action-based user input handling
 - Selectable color palettes
-- Adjustable game speed (WIP)
+- Adjustable game speed
 
 ## License
 

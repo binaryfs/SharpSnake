@@ -55,14 +55,23 @@ namespace SharpSnake.Game
         /// </summary>
         /// <param name="left">Initial position on X-axis</param>
         /// <param name="top">Initial position on Y-axis</param>
+        /// <param name="gameSpeed">Speed setting</param>
         /// <param name="initialLength">Initial length of the snake's body</param>
-        public Snake(int left, int top, int initialLength = 0)
+        public Snake(int left, int top, GameSpeed gameSpeed, int initialLength = 0)
         {
             Direction = DesiredDirection;
             Left = left;
             Top = top;
             Growth = initialLength;
-            MoveTimer = new Timer(10, Move);
+
+            var speedMap = new Dictionary<GameSpeed, int>()
+            {
+                [GameSpeed.Slow] = 9,
+                [GameSpeed.Medium] = 6,
+                [GameSpeed.Fast] = 3
+            };
+
+            MoveTimer = new Timer(speedMap[gameSpeed], Move);
         }
 
         public void HandleAction(ActionType action)

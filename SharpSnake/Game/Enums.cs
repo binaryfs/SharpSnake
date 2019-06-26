@@ -17,7 +17,6 @@
 
     public enum GameSpeed
     {
-        Auto,
         Slow,
         Medium,
         Fast

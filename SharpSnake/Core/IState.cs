@@ -1,6 +1,4 @@
-﻿using SharpSnake.Display;
-
-namespace SharpSnake.Core
+﻿namespace SharpSnake.Core
 {
     public delegate void RequestStateChangeHandler(StateChangeInfo info);
 
